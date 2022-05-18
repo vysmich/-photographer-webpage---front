@@ -2,9 +2,15 @@ import Hero from "../src/components/Hero";
 import MainCategoriesBanner from "../src/components/MainCategoriesBanner";
 import AboutBanner from "../src/components/AboutBanner";
 
+import { GetStaticProps} from 'next'
+
 import homepageGql from "../src/query/HomepageGql";
 
-export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
+interface hero {
+
+}
+
+export default function Home<{hero}>({ hero, mainCategoriesBanner, aboutBanner }) {
   return (
     <div>
       <Hero heroData={hero} />
@@ -14,6 +20,7 @@ export default function Home({ hero, mainCategoriesBanner, aboutBanner }) {
   );
 }
 
-export async function getStaticProps(context) {
-  return homepageGql(context);
+
+export const getStaticProps: GetStaticProps = async (context) => {
+ return homepageGql(context);
 }

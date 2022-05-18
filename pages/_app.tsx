@@ -1,13 +1,21 @@
 import "../styles/globals.css";
 
-import { useEffect } from "react/cjs/react.production.min";
 import { ApolloProvider } from "@apollo/client";
 import client from "../apollo-client";
 
 import Layout from "../src/components/layout/Layout";
+
 import layoutGql from "../src/query/LayoutGql";
 
-function MyApp({ Component, pageProps, props }) {
+import type { AppProps } from "next/app";
+
+interface props {
+  props: {
+    data: {};
+  };
+}
+
+function MyApp({ Component, pageProps }: AppProps, { props }: props) {
   return (
     <ApolloProvider client={client}>
       <Layout contextLocale={props.contextLocale} layoutData={props.layout}>
